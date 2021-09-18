@@ -1,0 +1,78 @@
+version: v0.7.6-alpha.1
+
+identity:
+  default_schema_url: file://configs/identity.schema.json
+
+dsn: sqlite://data/kratos.db?_fk=true
+# dsn: memory
+
+serve:
+  public:
+    base_url: http://127.0.0.1:4455/auth/api
+    cors:
+      enabled: true
+  admin:
+    base_url: http://127.0.0.1:4434
+
+selfservice:
+  default_browser_return_url: http://127.0.0.1:4455/auth/dashboard
+  whitelisted_return_urls:
+    - http://127.0.0.1:4455
+  methods:
+    password:
+      enabled: true
+    link:
+      enabled: true
+  flows:
+    registration:
+      ui_url: http://127.0.0.1:4455/auth/registration
+      lifespan: 10m
+      # after:
+      #   password:
+      #     hooks:
+      #       - hook: session
+    login:
+      ui_url: http://127.0.0.1:4455/auth/login
+      lifespan: 10m
+    logout:
+      after:
+        default_browser_return_url: http://127.0.0.1:4455/auth/login
+    verification:
+      enabled: true
+      ui_url: http://127.0.0.1:4455/auth/verify
+      after:
+        default_browser_return_url: http://127.0.0.1:4455/auth/dashboard
+    recovery:
+      enabled: true
+      ui_url: http://127.0.0.1:4455/auth/recovery
+    settings:
+      ui_url: http://127.0.0.1:4455/auth/settings
+      privileged_session_max_age: 15m
+    error:
+      ui_url: http://127.0.0.1:4455/auth/error
+
+secrets:
+  cookie:
+    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+  default:
+    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+
+hashers:
+  # algorithm: argon2
+  argon2:
+    parallelism: 1
+    memory: 128MB
+    iterations: 1
+    salt_length: 16
+    key_length: 32
+
+courier:
+  smtp:
+    connection_uri: smtp://localhost:2500
+
+log:
+  level: info
+  format: text
+  leak_sensitive_values: true
+
+sqa-opt-out: true

@@ -1,0 +1,17 @@
+{{ define "content" }}
+<div class="content">
+  <div id="verification" class="container">
+    <h1>Verify your email address</h1>
+    <div id="ui">
+      {{ template "ui" . }}
+    </div>
+    {{ if eq .State "passed_challenge" }}
+      <p>Verification successful!</p>
+    {{ end }}
+    <hr />
+    <div>
+      <a href="/auth/dashboard">Home</a>
+    </div>
+  </div>
+</div>
+{{ end }}

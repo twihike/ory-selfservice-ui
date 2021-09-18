@@ -1,0 +1,16 @@
+{{ define "ui_node_input_button" }}
+<div>
+  {{ $title := .Attributes.UiNodeInputAttributes.Name }}
+  {{ if ne .Meta.Label.Text "" }}
+    {{ $title = .Meta.Label.Text }}
+  {{ end }}
+  <button 
+    type="{{ .Attributes.UiNodeInputAttributes.Type }}"
+    name="{{ .Attributes.UiNodeInputAttributes.Name }}"
+    value="{{ if .Attributes.UiNodeInputAttributes.Value }}{{ .Attributes.UiNodeInputAttributes.Value }}{{ end }}"
+    {{ if .Attributes.UiNodeInputAttributes.Disabled }}disabled{{ end }}
+  >
+    {{ $title }}
+  </button>
+</div>
+{{ end }}

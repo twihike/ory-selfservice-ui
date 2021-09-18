@@ -1,0 +1,18 @@
+{{ define "content" }}
+<div class="content">
+  <div id="dashboard" class="container">
+    <h1>Welcome</h1>
+    <div id="data">
+      <pre>{{ . }}</pre>
+    </div>
+    <hr />
+    <div>
+      <a href="/auth/api/sessions/whoami">Whoami</a>
+      <a href="/auth/registration">Registration</a>
+      <a href="/auth/login">Log in</a>
+      <a href="/auth/settings">Settings</a>
+      <a href="/auth/verify">Verify your email address</a>
+    </div>
+  </div>
+</div>
+{{ end }}

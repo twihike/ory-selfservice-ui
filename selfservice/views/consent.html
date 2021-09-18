@@ -1,0 +1,48 @@
+{{ define "content" }}
+<div class="content">
+  <div class="container">
+    <h1>Consent page</h1>
+    <form action="/oauth/consent" method="POST">
+      <input name="challenge" type="hidden" value="{{ .Payload.Challenge }}" />
+      <input name="_csrf" type="hidden" value="!! csrfToken !!" />
+
+      <p>Wants access resources on your behalf and to:</p>
+      <fieldset>
+        <div>Scopes</div>
+        {{ range .Payload.RequestedScope }}
+          <div>
+            <label>
+              <input type="checkbox" id="{{ . }}" name="grant_scope" value="{{ . }}" />
+              {{ . }}
+            </label>
+          </div>
+        {{ end }}
+      </fieldset>
+
+      <ul>
+        {{ if ne .Payload.Client.PolicyURI "" }}
+          <li id="login-csrfToken">
+            <a href="{{ .Payload.Client.PolicyURI }}">Read the Privacy Policy</a>
+          </li>
+        {{ end }}
+        {{ if ne .Payload.Client.TosURI "" }}
+          <li id="login-csrfToken">
+            <a href="{{ .Payload.Client.TosURI }}">Terms of Service</a>
+          </li>
+        {{ end }}
+      </ul>
+
+      <p>
+        <label>
+          <input type="checkbox" id="remember" value="1" name="remember" />
+          Do not ask me again</p>
+        </label>
+      </p>
+      <div>
+        <button type="submit" id="accept" name="submit" value="Allow access">Allow access</button>
+        <button type="submit" id="accept" name="submit" value="Deny access">Deny access</button>
+      </div>
+  </form>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,13 @@
+{{ define "content" }}
+<div class="content">
+  <div id="error" class="container">
+    <h1>An error occurred</h1>
+    <div>
+      <pre><code>{{ .Error }}</code></pre>
+    </div>
+    <div>
+      <a href="/auth/dashboard">Home</a>
+    </div>
+  </div>
+</div>
+{{ end }}

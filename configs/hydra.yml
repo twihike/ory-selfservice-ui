@@ -1,0 +1,35 @@
+version: v1.10.6
+
+dsn: sqlite://data/hydra.db?_fk=true
+# dsn: memory
+
+urls:
+  login: http://127.0.0.1:4455/oauth/login
+  consent: http://127.0.0.1:4455/oauth/consent
+  logout: http://127.0.0.1:4455/oauth/logout
+  error: http://127.0.0.1:4455/oauth/error
+  self:
+    public: http://127.0.0.1:4444
+    issuer: http://127.0.0.1:4444
+
+# oidc:
+#   subject_identifiers:
+#     supported_types:
+#       - public
+#       - pairwise
+#     pairwise:
+#       salt: PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+
+secrets:
+  cookie:
+    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+  system:
+    - PLEASE-CHANGE-ME-I-AM-VERY-INSECURE
+
+log:
+  level: info
+  format: text
+  leak_sensitive_values: true
+
+sqa:
+  opt_out: true

@@ -1,0 +1,23 @@
+{{ define "ui_nodes" }}
+<div>
+  {{ range . }}
+    <div>
+      {{ if eq .Type "input" }}
+        {{ if eq .Attributes.UiNodeInputAttributes.Type "hidden" }}
+          {{ template "ui_node_input_hidden" . }}
+        {{ else if eq .Attributes.UiNodeInputAttributes.Type "password" }}
+          {{ template "ui_node_input_password" . }}
+        {{ else if eq .Attributes.UiNodeInputAttributes.Type "checkbox" }}
+          {{ template "ui_node_input_checkbox" . }}
+        {{ else if eq .Attributes.UiNodeInputAttributes.Type "submit" }}
+          {{ template "ui_node_input_button" . }}
+        {{ else }}
+          {{ template "ui_node_input_default" . }}
+        {{ end }}
+      {{ else }}
+        .
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,7 @@
+{{ define "messages" }}
+<div class="messages">
+  {{ range . }}
+    <div class="message {{ .Type }}">{{ .Text }}</div>
+  {{ end }}
+</div>
+{{ end }}

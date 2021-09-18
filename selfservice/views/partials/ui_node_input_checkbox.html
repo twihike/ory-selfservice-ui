@@ -1,0 +1,25 @@
+{{ define "ui_node_input_checkbox" }}
+<div>
+  {{ $title := .Attributes.UiNodeInputAttributes.Name }}
+  {{ if ne .Meta.Label.Text "" }}
+    {{ $title = .Meta.Label.Text }}
+  {{ end }}
+  <label>
+    <input
+      type="hidden"
+      name="{{ .Attributes.UiNodeInputAttributes.Name }}"
+      value="{{ if .Attributes.UiNodeInputAttributes.Value }}{{ .Attributes.UiNodeInputAttributes.Value }}{{ end }}"
+    />
+    <input
+      type="{{ .Attributes.UiNodeInputAttributes.Type }}"
+      name="{{ .Attributes.UiNodeInputAttributes.Name }}"
+      value="true"
+      placeholder="{{ $title }}"
+      {{ if .Attributes.UiNodeInputAttributes.Value }}checked{{ end }}
+      {{ if .Attributes.UiNodeInputAttributes.Disabled }}disabled{{ end }}
+    />
+    <span>{{ $title }}</span>
+  </label>
+  {{ template "messages" .Messages }}
+</div>
+{{ end }}

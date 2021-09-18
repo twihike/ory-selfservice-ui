@@ -1,0 +1,6 @@
+{{ define "ui" }}
+<form action="{{ .Ui.Action }}" method="{{ .Ui.Method }}">
+  <p>{{ template "messages" .Ui.Messages }}</p>
+  {{ template "ui_nodes" .Ui.Nodes }}
+</form>
+{{ end }}

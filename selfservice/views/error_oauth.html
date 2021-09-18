@@ -1,0 +1,17 @@
+{{ define "content" }}
+<div class="content">
+  <div id="error" class="container">
+    <h1>An error occurred</h1>
+    {{ if .Error }}
+      <div>
+        <pre><code>{{ .Error }}</code></pre>
+      </div>
+    {{ end }}
+    {{ if .ErrorDescription }}
+      <div>
+        <pre><code>{{ .ErrorDescription }}</code></pre>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
